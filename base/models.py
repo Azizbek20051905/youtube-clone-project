@@ -7,8 +7,8 @@ class CustomUser(AbstractUser):
         ('super_admin', "Super Admin"),
         ('account', "account"),
     ]
-
-    role = models.CharField(max_length=100, choices=ROLE_CHOICE)
+    profile_image = models.ImageField(upload_to="profile/image", blank=True, null=True)
+    role = models.CharField(max_length=100, choices=ROLE_CHOICE, default='account')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

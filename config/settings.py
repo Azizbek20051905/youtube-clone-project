@@ -67,6 +67,8 @@ TEMPLATES = [
     },
 ]
 
+# LOGIN_URL = '/login'
+
 WSGI_APPLICATION = 'config.wsgi.application'
 
 

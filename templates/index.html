@@ -8,6 +8,7 @@
   <link type="images/png" rel="icon" href="images/icons8-youtube.png">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"
     integrity="sha384-3B6NwesSXE7YJlcLI9RpRqGf2p/EgVH8BgoKTaUrmKNDkHPStTQ3EyoYjCGXaOTS" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
   <title>Youtube </title>
 </head>
@@ -29,10 +30,23 @@
           <i class="fa-solid fa-grip"></i>
           <i class="fa-solid fa-bell"></i>
         </div>
-
-        <div class="img">
-          <img src="images/logo.png" alt="">
+        
+        <div class="dropdown img ">
+          <button class="btn btn-secondary dropdown-toggle p-0"  style="border-radius: 50%;" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
+            {% if request.user.profile_image %}
+              <img src="{{ request.user.profile_image }}" alt="">
+            {% else %}
+              <img style='border-radius: 50%;' src="https://static.vecteezy.com/system/resources/previews/033/051/579/non_2x/user-interface-icon-png.png" alt="">
+            {% endif %}
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <a class="dropdown-item" href="#">Setting</a>
+            <a class="dropdown-item" href="#">Add Channel</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/logout/">Logout</a>
+          </div>
         </div>
+
       </div>
 
       <div class="toggle">
@@ -169,327 +183,34 @@
 
   <main>
     <section class="video_content grid">
-      <div class="video_items">
-        <a href="single-page.html">
-          <img src="images/video_images/back5.jpg" alt="">
-        </a>
-        <div class="details flex">
-          <div class="img">
-            <img src="images/logo.png" alt="">
-          </div>
-          <div class="heading">
-            <p>How to make Hotel Booking Website With HTML CSS ......</p>
-            <span>GorkCoder <i class="fa fa-circle-check"></i> </span>
-            <span>56.7M .1 Week ago</span>
-          </div>
-        </div>
-      </div>
-      <div class="video_items">
-        <a href="single-page.html">
-          <img src="images/video_images/back1.jpg" alt="">
-        </a>
-        <div class="details flex">
-          <div class="img">
-            <img
-              src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-people-victoruler-flat-victoruler-5.png" />
-          </div>
-          <div class="heading">
-            <p>How to make Hotel Booking Website With HTML CSS ......</p>
-            <span>GorkCoder <i class="fa fa-circle-check"></i> </span>
-            <span>56.7M .1 Week ago</span>
+
+      {% for video in videos %}
+        <div class="video_items">
+          <a href="single-page.html">
+            <img src="{{ video.thumbnail_image.url }}" alt="">
+          </a>
+          <div class="details flex">
+            <div class="img">
+              <img
+                src="{{ video.channel.profile_icon.url }}" />
+            </div>
+            <div class="heading">
+              <p>{{ video.name }}</p>
+              <span>{{ video.channel.name }} <i class="fa fa-circle-check"></i> </span>
+              <span>{{ video.views|length }}</span>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="video_items">
-        <a href="single-page.html">
-          <img src="images/video_images/back3.jpg" alt="">
-        </a>
-        <div class="details flex">
-          <div class="img">
-            <img
-              src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-occupation-and-people-victoruler-flat-victoruler.png" />
-          </div>
-          <div class="heading">
-            <p>How to make Hotel Booking Website With HTML CSS ......</p>
-            <span>GorkCoder <i class="fa fa-circle-check"></i> </span>
-            <span>56.7M .1 Week ago</span>
-          </div>
-        </div>
-      </div>
-      <div class="video_items">
-        <a href="single-page.html">
-          <img src="images/video_images/back4.jpg" alt="">
-        </a>
-        <div class="details flex">
-          <div class="img">
-            <img
-              src="https://img.icons8.com/external-victoruler-linear-colour-victoruler/64/000000/external-boy-children-avatar-victoruler-linear-colour-victoruler-2.png" />
-          </div>
-          <div class="heading">
-            <p>How to make Hotel Booking Website With HTML CSS ......</p>
-            <span>GorkCoder <i class="fa fa-circle-check"></i> </span>
-            <span>56.7M .1 Week ago</span>
-          </div>
-        </div>
-      </div>
-      <div class="video_items">
-        <a href="single-page.html">
-          <img src="images/video_images/back6.jpg" alt="">
-        </a>
-        <div class="details flex">
-          <div class="img">
-            <img
-              src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-children-avatar-victoruler-flat-victoruler-12.png" />
-          </div>
-          <div class="heading">
-            <p>How to make Hotel Booking Website With HTML CSS ......</p>
-            <span>GorkCoder <i class="fa fa-circle-check"></i> </span>
-            <span>56.7M .1 Week ago</span>
-          </div>
-        </div>
-      </div>
-      <div class="video_items">
-        <a href="single-page.html">
-          <img src="images/video_images/back5.jpg" alt="">
-        </a>
-        <div class="details flex">
-          <div class="img">
-            <img src="images/logo.png" alt="">
-          </div>
-          <div class="heading">
-            <p>How to make Hotel Booking Website With HTML CSS ......</p>
-            <span>GorkCoder <i class="fa fa-circle-check"></i> </span>
-            <span>56.7M .1 Week ago</span>
-          </div>
-        </div>
-      </div>
-      <div class="video_items">
-        <a href="single-page.html">
-          <img src="images/video_images/back1.jpg" alt="">
-        </a>
-        <div class="details flex">
-          <div class="img">
-            <img
-              src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-people-victoruler-flat-victoruler-5.png" />
-          </div>
-          <div class="heading">
-            <p>How to make Hotel Booking Website With HTML CSS ......</p>
-            <span>GorkCoder <i class="fa fa-circle-check"></i> </span>
-            <span>56.7M .1 Week ago</span>
-          </div>
-        </div>
-      </div>
-      <div class="video_items">
-        <a href="single-page.html">
-          <img src="images/video_images/back3.jpg" alt="">
-        </a>
-        <div class="details flex">
-          <div class="img">
-            <img
-              src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-occupation-and-people-victoruler-flat-victoruler.png" />
-          </div>
-          <div class="heading">
-            <p>How to make Hotel Booking Website With HTML CSS ......</p>
-            <span>GorkCoder <i class="fa fa-circle-check"></i> </span>
-            <span>56.7M .1 Week ago</span>
-          </div>
-        </div>
-      </div>
-      <div class="video_items">
-        <a href="single-page.html">
-          <img src="images/video_images/back4.jpg" alt="">
-        </a>
-        <div class="details flex">
-          <div class="img">
-            <img
-              src="https://img.icons8.com/external-victoruler-linear-colour-victoruler/64/000000/external-boy-children-avatar-victoruler-linear-colour-victoruler-2.png" />
-          </div>
-          <div class="heading">
-            <p>How to make Hotel Booking Website With HTML CSS ......</p>
-            <span>GorkCoder <i class="fa fa-circle-check"></i> </span>
-            <span>56.7M .1 Week ago</span>
-          </div>
-        </div>
-      </div>
-      <div class="video_items">
-        <a href="single-page.html">
-          <img src="images/video_images/back6.jpg" alt="">
-        </a>
-        <div class="details flex">
-          <div class="img">
-            <img
-              src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-children-avatar-victoruler-flat-victoruler-12.png" />
-          </div>
-          <div class="heading">
-            <p>How to make Hotel Booking Website With HTML CSS ......</p>
-            <span>GorkCoder <i class="fa fa-circle-check"></i> </span>
-            <span>56.7M .1 Week ago</span>
-          </div>
-        </div>
-      </div>
-      <div class="video_items">
-        <a href="single-page.html">
-          <img src="images/video_images/back5.jpg" alt="">
-        </a>
-        <div class="details flex">
-          <div class="img">
-            <img src="images/logo.png" alt="">
-          </div>
-          <div class="heading">
-            <p>How to make Hotel Booking Website With HTML CSS ......</p>
-            <span>GorkCoder <i class="fa fa-circle-check"></i> </span>
-            <span>56.7M .1 Week ago</span>
-          </div>
-        </div>
-      </div>
-      <div class="video_items">
-        <a href="single-page.html">
-          <img src="images/video_images/back1.jpg" alt="">
-        </a>
-        <div class="details flex">
-          <div class="img">
-            <img
-              src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-people-victoruler-flat-victoruler-5.png" />
-          </div>
-          <div class="heading">
-            <p>How to make Hotel Booking Website With HTML CSS ......</p>
-            <span>GorkCoder <i class="fa fa-circle-check"></i> </span>
-            <span>56.7M .1 Week ago</span>
-          </div>
-        </div>
-      </div>
-      <div class="video_items">
-        <a href="single-page.html">
-          <img src="images/video_images/back3.jpg" alt="">
-        </a>
-        <div class="details flex">
-          <div class="img">
-            <img
-              src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-occupation-and-people-victoruler-flat-victoruler.png" />
-          </div>
-          <div class="heading">
-            <p>How to make Hotel Booking Website With HTML CSS ......</p>
-            <span>GorkCoder <i class="fa fa-circle-check"></i> </span>
-            <span>56.7M .1 Week ago</span>
-          </div>
-        </div>
-      </div>
-      <div class="video_items">
-        <a href="single-page.html">
-          <img src="images/video_images/back4.jpg" alt="">
-        </a>
-        <div class="details flex">
-          <div class="img">
-            <img
-              src="https://img.icons8.com/external-victoruler-linear-colour-victoruler/64/000000/external-boy-children-avatar-victoruler-linear-colour-victoruler-2.png" />
-          </div>
-          <div class="heading">
-            <p>How to make Hotel Booking Website With HTML CSS ......</p>
-            <span>GorkCoder <i class="fa fa-circle-check"></i> </span>
-            <span>56.7M .1 Week ago</span>
-          </div>
-        </div>
-      </div>
-      <div class="video_items">
-        <a href="single-page.html">
-          <img src="images/video_images/back6.jpg" alt="">
-        </a>
-        <div class="details flex">
-          <div class="img">
-            <img
-              src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-children-avatar-victoruler-flat-victoruler-12.png" />
-          </div>
-          <div class="heading">
-            <p>How to make Hotel Booking Website With HTML CSS ......</p>
-            <span>GorkCoder <i class="fa fa-circle-check"></i> </span>
-            <span>56.7M .1 Week ago</span>
-          </div>
-        </div>
-      </div>
-      <div class="video_items">
-        <a href="single-page.html">
-          <img src="images/video_images/back5.jpg" alt="">
-        </a>
-        <div class="details flex">
-          <div class="img">
-            <img src="images/logo.png" alt="">
-          </div>
-          <div class="heading">
-            <p>How to make Hotel Booking Website With HTML CSS ......</p>
-            <span>GorkCoder <i class="fa fa-circle-check"></i> </span>
-            <span>56.7M .1 Week ago</span>
-          </div>
-        </div>
-      </div>
-      <div class="video_items">
-        <a href="single-page.html">
-          <img src="images/video_images/back1.jpg" alt="">
-        </a>
-        <div class="details flex">
-          <div class="img">
-            <img
-              src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-people-victoruler-flat-victoruler-5.png" />
-          </div>
-          <div class="heading">
-            <p>How to make Hotel Booking Website With HTML CSS ......</p>
-            <span>GorkCoder <i class="fa fa-circle-check"></i> </span>
-            <span>56.7M .1 Week ago</span>
-          </div>
-        </div>
-      </div>
-      <div class="video_items">
-        <a href="single-page.html">
-          <img src="images/video_images/back3.jpg" alt="">
-        </a>
-        <div class="details flex">
-          <div class="img">
-            <img
-              src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-occupation-and-people-victoruler-flat-victoruler.png" />
-          </div>
-          <div class="heading">
-            <p>How to make Hotel Booking Website With HTML CSS ......</p>
-            <span>GorkCoder <i class="fa fa-circle-check"></i> </span>
-            <span>56.7M .1 Week ago</span>
-          </div>
-        </div>
-      </div>
-      <div class="video_items">
-        <a href="single-page.html">
-          <img src="images/video_images/back4.jpg" alt="">
-        </a>
-        <div class="details flex">
-          <div class="img">
-            <img
-              src="https://img.icons8.com/external-victoruler-linear-colour-victoruler/64/000000/external-boy-children-avatar-victoruler-linear-colour-victoruler-2.png" />
-          </div>
-          <div class="heading">
-            <p>How to make Hotel Booking Website With HTML CSS ......</p>
-            <span>GorkCoder <i class="fa fa-circle-check"></i> </span>
-            <span>56.7M .1 Week ago</span>
-          </div>
-        </div>
-      </div>
-      <div class="video_items">
-        <a href="single-page.html">
-          <img src="images/video_images/back6.jpg" alt="">
-        </a>
-        <div class="details flex">
-          <div class="img">
-            <img
-              src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-children-avatar-victoruler-flat-victoruler-12.png" />
-          </div>
-          <div class="heading">
-            <p>How to make Hotel Booking Website With HTML CSS ......</p>
-            <span>GorkCoder <i class="fa fa-circle-check"></i> </span>
-            <span>56.7M .1 Week ago</span>
-          </div>
-        </div>
-      </div>
+      {% endfor %}
+      
     </section>
   </main>
 
 
   <script src="{% static 'js/main.js' %}" charset="utf-8"></script>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
 
 </html>
