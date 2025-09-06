@@ -10,6 +10,17 @@ class HomePage(mixins.LoginRequiredMixin, generic.ListView):
     context_object_name = 'videos'
     login_url = '/login'
 
+class CreateChannelView(mixins.LoginRequiredMixin, generic.CreateView):
+    login_url = '/login'
+    model = Channel
+    template_name = "add_channel.html"
+    fields = ['name', 'bio', 'banner', 'profile_icon']
+    success_url = '/'
+    
+    def form_valid(self, form):
+        form.instance.owner = self.request.user
+        return super().form_valid(form)
+
 
 def loginPage(request):
 
@@ -63,3 +74,4 @@ def registerPage(request):
 def logoutPage(request):
     logout(request)
     return redirect('/login')
+

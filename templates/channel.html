@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Studio Content</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #fff;
+        }
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+        .sidebar {
+            width: 240px;
+            background-color: #212121;
+            padding: 20px 0;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .sidebar ul li:hover {
+            background-color: #333;
+        }
+        .sidebar ul li.active {
+            background-color: #333;
+        }
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #333;
+        }
+        .header .profile {
+            display: flex;
+            align-items: center;
+        }
+        .header .profile img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .header .tabs {
+            display: flex;
+            gap: 20px;
+        }
+        .header .tabs span {
+            padding: 5px 15px;
+            cursor: pointer;
+        }
+        .header .tabs span:hover {
+            background-color: #333;
+            border-radius: 15px;
+        }
+        .content-area {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+            text-align: center;
+        }
+        .content-area img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li class="active">Контент</li>
+                <li>Аналитика</li>
+                <li>Комментарии</li>
+                <li>Плейлисты</li>
+                <li>Монетизация</li>
+                <li>Настройки канала</li>
+                <li>Финанси</li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <div class="header">
+                <div class="profile">
+                    <img src="https://via.placeholder.com/40" alt="Profile">
+                    <div>
+                        <h3>Контент на канале</h3>
+                        <p>Ваш канал: Azzbek Ibragimov</p>
+                    </div>
+                </div>
+                <div class="tabs">
+                    <span>Видео</span>
+                    <span>Шортс</span>
+                    <span>Трансляции</span>
+                    <span>Плейлисты</span>
+                    <span>Рекламные кампании</span>
+                </div>
+                <div class="actions">
+                    <!-- Actions like search, notifications -->
+                </div>
+            </div>
+            <div class="content-area">
+                <img src="https://via.placeholder.com/300" alt="Cartoon Character">
+                <p>Здесь пока ничего нет.</p>
+                <button>Добавить видео</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
